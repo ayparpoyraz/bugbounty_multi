@@ -1,0 +1,52 @@
+{
+  "web_scanners": {
+    "01": {
+      "name": "Nmap",
+      "command": "nmap"
+    },
+    "02": {
+      "name": "Gobuster",
+      "command": "gobuster"
+    },
+    "03": {
+      "name": "ffuf",
+      "command": "ffuf"
+    },
+    "04": {
+      "name": "Nikto",
+      "command": "nikto"
+    },
+    "05": {
+      "name": "Nuclei",
+      "command": "nuclei"
+    },
+    "06": {
+      "name": "WhatWeb",
+      "command": "whatweb"
+    },
+    "07": {
+      "name": "Wafw00f",
+      "command": "wafw00f"
+    },
+    "08": {
+      "name": "Amass",
+      "command": "amass"
+    },
+    "09": {
+      "name": "Subfinder",
+      "command": "subfinder"
+    },
+    "10": {
+      "name": "httpx",
+      "command": "httpx"
+    },
+    "11": {
+      "name": "Feroxbuster",
+      "command": "feroxbuster"
+    },
+    // "12": {
+    //   "name": "Burp Suite",
+    //   "command": "burpsuite"
+    // }
+  }
+}
