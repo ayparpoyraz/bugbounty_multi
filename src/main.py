@@ -8,7 +8,7 @@
 '''
 
 # [-1-] Arayüz : 13.09.2026
-from user_interface.user import banner
+from core.user import banner
 from rich.console import Console
 
 
