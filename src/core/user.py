@@ -17,7 +17,21 @@
 [TAG] CATEGORIES = #C10
 
 [END]
+EKLENENLER
+1. nmap eklendi
+2.gobuster eklendi
+3.ffuf eklendi
+4.nuclei eklendi
+5.whatweb eklendi
+6.wafw00f eklendi
+
+YAPILACAKLAR
+1. dosya yolları doğru girildi 
+2. eklenen toolar optimize edilcek
+3. yarı eklemeye devam etcem
+
 """
+
 
 
 import os
@@ -25,11 +39,16 @@ import os
 from rich.console import Console
 from rich.panel import Panel
 
-from private_tools.http_secure_controller import http_secure
-from private_tools.network_monitor_controller import network_monitor
-from private_tools.slayer_documentry import sub_domain_scanner
-from private_tools.ssl_certificate_controller import SSL_certificate
-
+from .private_tools.http_secure_controller import http_secure
+from .private_tools.network_monitor_controller import network_monitor
+from .private_tools.slayer_documentry import sub_domain_scanner
+from .private_tools.ssl_certificate_controller import SSL_certificate
+from .POPULAR.nmap_controller import nmap_tara
+from .POPULAR.gosbuster_controller import gobuster_tara
+from .POPULAR.ffuf_controller import ffuf_tara
+from .POPULAR.Nuclei_controller import nuclei_tara
+from .POPULAR.whatweb_controller import whatweb_tara
+from .POPULAR.wafw00f_controller import wafw00f_tara
 
 damga = "[Private Tool]"
 
@@ -65,13 +84,13 @@ CATEGORIES = {
 
 #WST
 WEB_SECURITY_TOOLS = {
-    "01": ("Nmap", None), # OFFLINE
-    "02": ("Gobuster", None),# OFFLINE
-    "03": ("ffuf", None),# OFFLINE
+    "01": ("Nmap", nmap_tara), # ONLİNE
+    "02": ("Gobuster", gobuster_tara),# ONLİNE
+    "03": ("ffuf", ffuf_tara),# ONLİNE
     "04": ("Nikto", None),# OFFLINE
-    "05": ("Nuclei", None),# OFFLINE
-    "06": ("WhatWeb", None),# OFFLINE
-    "07": ("Wafw00f", None),# OFFLINE
+    "05": ("Nuclei",  nuclei_tara),# ONLİNE
+    "06": ("WhatWeb", whatweb_tara),# ONLİNE
+    "07": ("Wafw00f", wafw00f_tara),# ONLİNE
     "08": ("Amass", None),# OFFLINE
     "09": ("Subfinder", None),# OFFLINE
     "10": ("httpx", None),# OFFLINE
