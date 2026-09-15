@@ -1,21 +1,26 @@
 """
-[!] Bu aracın amacı yeni başlayanlar ve araçların ne gibi yerlerde kullanıldığını öğretir 
+___________________________________________________________________  
+[!] Bu aracın amacı yeni başlayanlara güvenlik araçlarının
+    ne işe yaradığını öğretmek ve araçları tek bir arayüz
+    üzerinden çalıştırabilmektir.
 
-[!] Kullanıcya hangi aracı kullanmasını istediğini sorup 
-    işlemlere devam etmek ve gerekli bilgileri alıp yapıcağınız 
-    işlem türüne göre işleyişin devam etmesi
+[!] Kullanıcıdan kullanılacak araç seçilir, gerekli bilgiler alınır
+    ve seçilen araç kendi işlem akışına göre çalıştırılır.
+
+___________________________________________________________________    
 
 [-TODO-]
 :1 => WEB ile ilgili tüm araçları ekleyip çalıştırabilmek
-:2 => daha modern arayüz kulllanıcı dostu 
-:3 => Optimize Temiz Proje Yapısı
-
+:2 => Daha modern ve kullanıcı dostu arayüz
+:3 => Optimize ve temiz proje yapısı
 
 [-TAGS-]
 
-[TAG] WEB_SECURITY_TOOLS = #WST 
-[TAG] CATEGORIES = #C10
+[TAG]: WEB_SECURITY_TOOLS = #WST
+[TAG]: CATEGORIES = #C10
+[TAG]: private_tools = #pr_tools
 
+<<<<<<< HEAD
 [END]
 EKLENENLER
 1. nmap eklendi
@@ -34,10 +39,14 @@ YAPILACAKLAR
 
 
 
+=======
+___________________________________________________________________
+"""
+>>>>>>> origin/main
 import os
-
 from rich.console import Console
 from rich.panel import Panel
+<<<<<<< HEAD
 
 from .private_tools.http_secure_controller import http_secure
 from .private_tools.network_monitor_controller import network_monitor
@@ -49,6 +58,15 @@ from .POPULAR.ffuf_controller import ffuf_tara
 from .POPULAR.Nuclei_controller import nuclei_tara
 from .POPULAR.whatweb_controller import whatweb_tara
 from .POPULAR.wafw00f_controller import wafw00f_tara
+=======
+# Private Tools -> 5
+from private_tools.http_secure_controller import http_secure
+from private_tools.network_monitor_controller import network_monitor
+from private_tools.slayer_documentry import sub_domain_scanner
+from private_tools.ssl_certificate_controller import SSL_certificate
+from private_tools.http_login_brute_force import http_login_brute_force
+
+>>>>>>> origin/main
 
 damga = "[Private Tool]"
 
@@ -66,12 +84,12 @@ BANNER = r"""
 
 
 # Ana kategoriler
-# Web Security aktif 14.09.2026 
+# Web Security aktif 14.09.2026
 
-#C10
+# C10
 CATEGORIES = {
-    "01": "Web Security", #ONLINE
-    "02": "Network Security", #OFFLINE
+    "01": "Web Security", # ONLINE
+    "02": "Network Security", # OFFLINE
     "03": "Reconnaissance", # OFFLINE
     "04": "Vulnerability Assessment", # OFFLINE
     "09": "Offensive Security", # OFFLINE
@@ -80,10 +98,11 @@ CATEGORIES = {
 
 
 # Web Security altında çalıştırılabilecek araçlar
-# None = araç henüz Python fonksiyonuna bağlanmadı
+# None = Araç henüz Python fonksiyonuna bağlanmadı
 
-#WST
+# WST
 WEB_SECURITY_TOOLS = {
+<<<<<<< HEAD
     "01": ("Nmap", nmap_tara), # ONLİNE
     "02": ("Gobuster", gobuster_tara),# ONLİNE
     "03": ("ffuf", ffuf_tara),# ONLİNE
@@ -95,8 +114,23 @@ WEB_SECURITY_TOOLS = {
     "09": ("Subfinder", None),# OFFLINE
     "10": ("httpx", None),# OFFLINE
     "11": ("Feroxbuster", None),# OFFLINE
+=======
+    "01": ("Nmap", None), # OFFLINE
+    "02": ("Gobuster", None), # OFFLINE
+    "03": ("ffuf", None), # OFFLINE
+    "04": ("Nikto", None), # OFFLINE
+    "05": ("Nuclei", None), # OFFLINE
+    "06": ("WhatWeb", None), # OFFLINE
+    "07": ("Wafw00f", None), # OFFLINE
+    "08": ("Amass", None), # OFFLINE
+    "09": ("Subfinder", None), # OFFLINE
+    "10": ("httpx", None), # OFFLINE
+    "11": ("Feroxbuster", None), # OFFLINE
+
+>>>>>>> origin/main
     # Kendi geliştirdiğimiz araçlar
-    "12": ("HTTP Secure Controller", http_secure), #ONLINE
+    "12": ("HTTP Secure Controller", http_secure), # ONLINE
+    "13": ("HTTP Login Brute Force", http_login_brute_force), # ONLINE
 }
 
 
@@ -105,7 +139,7 @@ def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-# Menülerin üst kısmındaki başlığı oluşturur.
+# Menü başlığını gösterir.
 def print_header(title):
     console.print(
         Panel(
@@ -116,9 +150,61 @@ def print_header(title):
     )
 
 
-# ASCII EKRANA BASTIR
+# Ana banner'ı gösterir.
 def print_banner():
     console.print(f"[bold cyan]{BANNER}[/bold cyan]")
+
+
+# HTTP Login Brute Force aracını çalıştırır.
+def http_login_brute_force():
+
+    clear_screen()
+    print_banner()
+    print_header("HTTP LOGIN BRUTE FORCE")
+
+    target_url = console.input(
+        "\n[bold cyan]Target URL → [/bold cyan]"
+    ).strip()
+
+    range_value = int(
+        console.input(
+            "[bold cyan]Password range → [/bold cyan]"
+        ).strip()
+    )
+
+    zfill = int(
+        console.input(
+            "[bold cyan]Password digit count → [/bold cyan]"
+        ).strip()
+    )
+
+    target_username = console.input(
+        "[bold cyan]Target Username → [/bold cyan]"
+    ).strip()
+
+    username_parser = console.input(
+        "[bold cyan]Username input parser → [/bold cyan]"
+    ).strip()
+
+    password_parser = console.input(
+        "[bold cyan]Password input parser → [/bold cyan]"
+    ).strip()
+
+    wordlist = console.input(
+        "[bold cyan]Wordlist path (optional) → [/bold cyan]"
+    ).strip()
+
+    login = Let(
+        url=target_url,
+        range_=range_value,
+        zfill=zfill,
+        username=target_username,
+        username_parser=username_parser,
+        passwd_parser=password_parser,
+        wordlist=wordlist if wordlist else None
+    )
+
+    login.process()
 
 
 # Ana kategori menüsünü gösterir.
@@ -129,7 +215,7 @@ def show_categories():
     console.print(
         Panel(
             "\n".join([
-                "[bold cyan][01][/bold cyan]  Web Security", # İlgili Alanımız Burası
+                "[bold cyan][01][/bold cyan]  Web Security", # İlgili alanımız burası
                 "[bold cyan][02][/bold cyan]  Network Security", # TODO
                 "[bold cyan][03][/bold cyan]  Reconnaissance", # TODO
                 "[bold cyan][04][/bold cyan]  Vulnerability Assessment", # TODO
@@ -146,10 +232,6 @@ def show_categories():
 
 # Web Security
 def web_security_menu():
-
-
-
-
 
     while True:
 
@@ -171,24 +253,22 @@ def web_security_menu():
                 "[bold cyan][10][/bold cyan]  httpx",
                 "[bold cyan][11][/bold cyan]  Feroxbuster",
 
-                # Kendi aracımızı diğer araçlardan ayırıyoruz.
+                # Kendi aracımızı diğer araçlardan ayırıyoruz
                 f"[bold cyan][12][/bold cyan]  HTTP Secure Controller {damga}",
-
-                "",
+                f"[bold cyan][13][/bold cyan]  HTTP Login Brute Force {damga}",
                 "[bold red][00][/bold red]  Back"
             ]),
         )
 
-        # Kullanıcının seçimini alıyoruz.
         selection = console.input(
             "\n[bold cyan]Select a tool => [/bold cyan]"
         ).strip()
 
-        # exit the menu
+        # Exit the menu
         if selection == "00":
             return
 
-        # Girilen numaraya karşılık gelen aracı dictionary'den buluyoruz yani   "12": ("HTTP Secure Controller", http_secure),
+        # Girilen numaraya karşılık gelen aracı dictionary'den buluyoruz.
         tool = WEB_SECURITY_TOOLS.get(selection)
 
         # Dictionary'de böyle bir numara yoksa hata veriyoruz.
@@ -201,9 +281,8 @@ def web_security_menu():
             )
             continue
 
-            
-        # name  = "Nmap"
-        # function = None
+        # name = Araç adı
+        # function = Araca bağlı Python fonksiyonu
         name, function = tool
 
         # Function None ise araç henüz kodumuza bağlanmamış demektir.
@@ -225,57 +304,54 @@ def web_security_menu():
             # Seçilen aracın Python fonksiyonunu çalıştırır.
             function()
 
-        # CTRL+C ile araç durdurulursa program tamamen kapanmaz.
         except KeyboardInterrupt:
             console.print(
                 "\n[bold yellow][!] Tool interrupted.[/bold yellow]"
             )
 
         # Araç çalışırken başka bir hata oluşursa yakalanır.
+        except ValueError:
+            console.print(
+                "\n[bold red][!] Invalid input. Please enter a valid value.[/bold red]"
+            )
+
         except Exception as error:
             console.print(
                 f"\n[bold red][!] Tool error:[/bold red] {error}"
             )
-
-        # Araç bittikten sonra menüye dönmeden önce bekler.
-        console.input(
-            "\n[dim]Press Enter to return...[/dim]"
-        )
+        console.input("\n[dim]Press Enter to return...[/dim]")
 
 
-# main func
+# Main function
 def main():
 
     while True:
-        
-        show_categories() # Kategorileri
-
-        # Kullanıcının kategori seçimini alır.
+        show_categories()
         selection = console.input(
             "\n[bold cyan]Select a category → [/bold cyan]"
         ).strip()
 
-        #Çıkış
+        # Çıkış
         if selection == "00":
             clear_screen()
-            console.print(
-                "[bold red]Exiting...[/bold red]"
-            )
+            console.print("[bold red]Exiting...[/bold red]")
             break
 
-        # 01--Web Security menüsüne girilir.
+
+
+
+
+
+        # 01 -> Web Security 
         if selection == "01":
             web_security_menu()
             continue
 
-        # Henüz oluşturmadığımız kategoriler için uyarı.
+
+
         if selection not in CATEGORIES:
-            console.print(
-                "\n[bold red][!] Invalid selection.[/bold red]"
-            )
-            console.input(
-                "\n[dim]Press Enter to continue...[/dim]"
-            )
+            console.print("\n[bold red][!] Invalid selection.[/bold red]")
+            console.input("\n[dim]Press Enter to continue...[/dim]")
             continue
 
         clear_screen()
@@ -291,8 +367,4 @@ def main():
             "\n[dim]Press Enter to return...[/dim]"
         )
 
-
-
-if __name__ == "__main__":
-    main()
-
+if __name__ == "__main__":main()
