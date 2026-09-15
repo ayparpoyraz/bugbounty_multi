@@ -20,18 +20,44 @@ ___________________________________________________________________
 [TAG]: CATEGORIES = #C10
 [TAG]: private_tools = #pr_tools
 
-___________________________________________________________________
+[END]
+EKLENENLER
+1. nmap eklendi
+2.gobuster eklendi
+3.ffuf eklendi
+4.nuclei eklendi
+5.whatweb eklendi
+6.wafw00f eklendi
+
+YAPILACAKLAR
+1. dosya yolları doğru girildi 
+2. eklenen toolar optimize edilcek
+3. yarı eklemeye devam etcem
+
 """
+
+
+
 import os
 from rich.console import Console
 from rich.panel import Panel
-# Private Tools -> 5
-from private_tools.http_secure_controller import http_secure
-from private_tools.network_monitor_controller import network_monitor
-from private_tools.slayer_documentry import sub_domain_scanner
-from private_tools.ssl_certificate_controller import SSL_certificate
-from private_tools.http_login_brute_force import http_login_brute_force
 
+from .private_tools.http_secure_controller import http_secure
+from .private_tools.network_monitor_controller import network_monitor
+from .private_tools.slayer_documentry import sub_domain_scanner
+from .private_tools.ssl_certificate_controller import SSL_certificate
+from .private_tools.http_login_brute_force import http_login_brute_force
+from .POPULAR.nmap_controller import nmap_tara
+from .POPULAR.gosbuster_controller import gobuster_tara
+from .POPULAR.ffuf_controller import ffuf_tara
+from .POPULAR.Nuclei_controller import nuclei_tara
+from .POPULAR.whatweb_controller import whatweb_tara
+from .POPULAR.wafw00f_controller import wafw00f_tara
+from .POPULAR.nikto_controller import nikto_tara
+from .POPULAR.amass_controller import amass_tara
+from .POPULAR.subfinder_controller import subfinder_tara
+from .POPULAR.httpx_controller import httpx_tara
+from .POPULAR.feroxbuster_controller import feroxbuster_tara
 
 damga = "[Private Tool]"
 
@@ -67,18 +93,17 @@ CATEGORIES = {
 
 # WST
 WEB_SECURITY_TOOLS = {
-    "01": ("Nmap", None), # OFFLINE
-    "02": ("Gobuster", None), # OFFLINE
-    "03": ("ffuf", None), # OFFLINE
-    "04": ("Nikto", None), # OFFLINE
-    "05": ("Nuclei", None), # OFFLINE
-    "06": ("WhatWeb", None), # OFFLINE
-    "07": ("Wafw00f", None), # OFFLINE
-    "08": ("Amass", None), # OFFLINE
-    "09": ("Subfinder", None), # OFFLINE
-    "10": ("httpx", None), # OFFLINE
-    "11": ("Feroxbuster", None), # OFFLINE
-
+    "01": ("Nmap", nmap_tara), # ONLİNE
+    "02": ("Gobuster", gobuster_tara),# ONLİNE
+    "03": ("ffuf", ffuf_tara),# ONLİNE
+    "04": ("Nikto", nikto_tara),# ONLİNE
+    "05": ("Nuclei",  nuclei_tara),# ONLİNE
+    "06": ("WhatWeb", whatweb_tara),# ONLİNE
+    "07": ("Wafw00f", wafw00f_tara),# ONLİNE
+    "08": ("Amass", amass_tara),# ONLİNE
+    "09": ("Subfinder", subfinder_tara),# ONLİNE
+    "10": ("httpx",httpx_tara),# ONLİNE
+    "11": ("Feroxbuster", feroxbuster_tara),# ONLİNE
     # Kendi geliştirdiğimiz araçlar
     "12": ("HTTP Secure Controller", http_secure), # ONLINE
     "13": ("HTTP Login Brute Force", http_login_brute_force), # ONLINE
@@ -106,58 +131,6 @@ def print_banner():
     console.print(f"[bold cyan]{BANNER}[/bold cyan]")
 
 
-# HTTP Login Brute Force aracını çalıştırır.
-def http_login_brute_force():
-
-    clear_screen()
-    print_banner()
-    print_header("HTTP LOGIN BRUTE FORCE")
-
-    target_url = console.input(
-        "\n[bold cyan]Target URL → [/bold cyan]"
-    ).strip()
-
-    range_value = int(
-        console.input(
-            "[bold cyan]Password range → [/bold cyan]"
-        ).strip()
-    )
-
-    zfill = int(
-        console.input(
-            "[bold cyan]Password digit count → [/bold cyan]"
-        ).strip()
-    )
-
-    target_username = console.input(
-        "[bold cyan]Target Username → [/bold cyan]"
-    ).strip()
-
-    username_parser = console.input(
-        "[bold cyan]Username input parser → [/bold cyan]"
-    ).strip()
-
-    password_parser = console.input(
-        "[bold cyan]Password input parser → [/bold cyan]"
-    ).strip()
-
-    wordlist = console.input(
-        "[bold cyan]Wordlist path (optional) → [/bold cyan]"
-    ).strip()
-
-    login = Let(
-        url=target_url,
-        range_=range_value,
-        zfill=zfill,
-        username=target_username,
-        username_parser=username_parser,
-        passwd_parser=password_parser,
-        wordlist=wordlist if wordlist else None
-    )
-
-    login.process()
-
-
 # Ana kategori menüsünü gösterir.
 def show_categories():
     clear_screen()
@@ -166,7 +139,7 @@ def show_categories():
     console.print(
         Panel(
             "\n".join([
-                "[bold cyan][01][/bold cyan]  Web Security", # İlgili alanımız burası
+                "[bold cyan][01][/bold cyan]  Web Security", # TAMAMLANDI
                 "[bold cyan][02][/bold cyan]  Network Security", # TODO
                 "[bold cyan][03][/bold cyan]  Reconnaissance", # TODO
                 "[bold cyan][04][/bold cyan]  Vulnerability Assessment", # TODO
