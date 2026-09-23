@@ -2,6 +2,7 @@ import socket
 import ssl
 from datetime import datetime, timezone
 from urllib.parse import urlparse
+
 def SSL_certificate():
     adres = input("Site adresi: ").strip()
     site = urlparse(adres if "://" in adres else "//" + adres).hostname
